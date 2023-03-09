@@ -1,0 +1,29 @@
+bool isNumeric(String s){
+  if(s == null){
+    return false;
+  }
+  return double.tryParse(s) != null;
+}
+
+void validArg(String arg){
+  if(!isNumeric(arg)){
+    throw "Invalid argument: $arg";
+  }
+}
+
+void main(List<String> args)
+{
+  List<double> args_list = [];
+  int index = 0;
+  try{
+    for(var arg in args){
+      validArg(arg);
+      args_list.insert(index++, double.parse(arg));
+    }
+    args_list.sort();
+    print("Max argument: ${args_list[index-1]}");
+  }
+   catch(e){
+    print("Error: $e");
+  }
+}

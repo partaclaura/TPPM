@@ -1,0 +1,17 @@
+void main(List<String> args){
+  List<int> bigInt = [];
+  for(var arg in args){
+    bigInt.insert(bigInt.length, int.parse(arg));
+  }
+  int number = 0;
+  for(int i = 0; i < bigInt.length; i++){
+    number = number*10 + bigInt[i];
+  }
+  number++;
+  bigInt = [];
+  while(number != 0){
+    bigInt.insert(0, number%10);
+    number = number ~/ 10;
+  }
+  print(bigInt);
+}

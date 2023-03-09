@@ -1,0 +1,57 @@
+void main(List<String> args)
+{
+  var frecv = <String, int>{};
+  int max1 = 0, max2 = 0, max3 = 0;
+  List<String> max1List = [], max2List = [], max3List = [];
+  for(var word in args){
+    for(int i = 0; i < word.length; i++){
+      if(frecv[word[i]] != null){
+        frecv[word[i]] = frecv[word[i]]! + 1;
+      }
+      else{
+        frecv[word[i]] = 1;
+      }
+    }
+  }
+
+  print(frecv);
+
+  for(var e in frecv.entries){
+      if(e.value > max1){
+        max3 = max2;
+        max2 = max1;
+        max1 = e.value;
+        max3List = max2List;
+        max2List = max1List;
+        max1List = [];
+        max1List.insert(max1List.length, e.key);
+      }
+      else if(e.value == max1){
+        max1List.insert(max1List.length, e.key);
+      }
+      else if(e.value > max2 && e.value < max1)
+      {
+                max3 = max2;
+        max2 = e.value;
+        max3List = max2List;
+        max2List = [];
+        max2List.insert(max2List.length, e.key);
+      }
+      else if(e.value == max2){
+        max2List.insert(max2List.length, e.key);
+      }
+      else if(e.value > max3 && e.value < max2)
+      {
+        max3 = e.value;
+        max3List = [];
+        max3List.insert(max3List.length, e.key);
+      }
+      else if(e.value == max3){
+        max3List.insert(max3List.length, e.key);
+      }
+    }
+
+  print("$max1 -> $max1List");
+  print("$max2 -> $max2List");
+  print("$max3 -> $max3List");
+}

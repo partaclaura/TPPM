@@ -1,0 +1,16 @@
+void main(List<String> args)
+{
+  String word = args[args.length - 1];
+  var wordMap = <String, int>{};
+  for(int i = 0; i < args.length - 1; i += 2){
+    wordMap[args[i]] = int.parse(args[i + 1]);
+  }
+  print("For word: $word");
+  print("And letter values: $wordMap");
+  int wordSum = 0;
+  for(int i = 0; i < word.length; i++){
+    wordSum += wordMap[word[i]] ?? 0;
+  }
+  print("Sum = $wordSum");
+
+}

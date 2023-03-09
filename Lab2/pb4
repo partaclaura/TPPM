@@ -1,0 +1,31 @@
+int digitSum(int n)
+{
+  int sum = 0;
+  while(n != 0){
+    sum += n % 10;
+    n ~/= 10;
+  }
+  return sum;
+}
+
+void main(List<String> args)
+{
+    int n = int.parse(args[0]);
+    var sums = <int, List<int>>{};
+    int mostNumbers = 0;
+    for(int i = 1; i <= n; i++)
+    {
+      List<int> crtlist = sums[digitSum(i)] ?? [];
+      crtlist.insert(crtlist.length, i);
+      sums[digitSum(i)] = crtlist;
+      if(crtlist.length > mostNumbers){
+        mostNumbers = crtlist.length;
+      }
+    }
+    int count = 0;
+    for(var e in sums.entries){
+      if(e.value.length == mostNumbers)
+        count++;
+    }
+    print(count);
+}

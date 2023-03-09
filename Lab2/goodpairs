@@ -1,0 +1,20 @@
+void main(List<String> args)
+{
+  List<int> list = [];
+  for(var arg in args)
+  {
+    list.insert(list.length, int.parse(arg));
+  }
+
+  List<Set<int>> sets = [];
+  for(int i = 0; i < list.length - 1; i++){
+    for(int j = i + 1; j < list.length; j++){
+      if(list[i] == list[j]){
+        print("Pair ($i, $j), with list[$i] == list[$j] (${list[i]} = ${list[j]})");
+        var pair = {i, j};
+        sets.insert(sets.length, pair);
+      }
+    }
+  }
+  print("Found ${sets.length} good pairs: $sets");
+}
